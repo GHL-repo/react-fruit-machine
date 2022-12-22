@@ -39,3 +39,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+}
