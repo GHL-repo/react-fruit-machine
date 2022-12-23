@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import JSConfetti from 'js-confetti'
 
 function App() {
   const [reels, setReels] = useState([]);
@@ -8,10 +9,11 @@ function App() {
   const [gameResult, setGameResult] = useState("");
   // One reel for now
   const reelArr = ["🍑","🍆","🍒","🛎️","🍫","🍥","🍥","🍥","🍥","🍥","🍥"];
+  // Confetti for the winner
+  const jsConfetti = new JSConfetti();
 
   // Listen if the game has ended
   useEffect(() => {
-    console.log("length after: " + reels.length)
     if (reels.length === 3) {
       setGameOver(true);
       checkIfWon();
@@ -29,6 +31,7 @@ function App() {
     // TODO: useEffect js confetti if won
       if (reels.every(symbol => symbol === reels[0])) {
       setGameResult("won")
+      jsConfetti.addConfetti();
     } else {
       setGameResult("lost")
     }
